@@ -8,7 +8,7 @@ import { ValidationService } from './validationService';
 
 
 export class AuthModule {
-    public static config(cfg: AuthConfig, userService: Type<UserService>): DynamicModule {
+    public static async config(cfg: AuthConfig, userService: Type<UserService>): Promise<DynamicModule> {
         return {
             module: AuthModule,
             controllers: [AuthController],

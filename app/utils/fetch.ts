@@ -1,4 +1,5 @@
 const API_BASE = '/api';
+import Router from 'next/router';
 
 function getUrl(url: string) {
     return `${API_BASE}${url}`;
@@ -62,7 +63,8 @@ const handleResponse = async <T>(request: () => Promise<Response>) => {
         }
     }
 
-    location.href = '/login';
+    Router.replace('/login');
+    // location.href = '/login';
 }
 
 export const get = async <T>(url: string) => {

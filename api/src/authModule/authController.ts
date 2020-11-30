@@ -63,7 +63,7 @@ export class AuthController {
                 return response.sendStatus(401);
             }
         } catch (err) {
-            response.status(401);
+            response.sendStatus(401);
         }
     }
 }

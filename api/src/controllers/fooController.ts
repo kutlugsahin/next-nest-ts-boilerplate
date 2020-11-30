@@ -11,7 +11,7 @@ export class FooController {
     async get(@User() user) {
         console.log(user);
         return {
-            foo: 'bar ' + i++
+            foo: `bar user ${user.id}, ${i++}`
         }
     }
 }
