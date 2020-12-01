@@ -1,5 +1,5 @@
-import { DynamicModule, MiddlewareConsumer, Module, NestModule, Scope, Type } from '@nestjs/common';
-import { BusinessModule } from 'src/business/business.module';
+import { DynamicModule, Type } from '@nestjs/common';
+import { BusinessModule } from '../business/business.module';
 import { AuthController } from './authController';
 import { AuthInterceptor } from './authGuard';
 import { AuthConfig, UserService } from './AuthService';

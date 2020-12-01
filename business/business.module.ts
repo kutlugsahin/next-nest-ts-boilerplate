@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from 'src/model/user';
+import { User, UserSchema } from '../model/user';
 import { UserBusiness } from './userBusiness';
 
 const connectionString = 'mongodb+srv://kutlu:0121@cluster0.fm8ir.mongodb.net/boilerplate?retryWrites=true&w=majority'
@@ -16,6 +16,6 @@ const modelModule = MongooseModule.forFeature([{ name: User.name, schema: UserSc
 @Module({
     imports: [mongooseModule, modelModule],
     exports: [UserBusiness],
-    providers: [UserBusiness]
+    providers: [UserBusiness],
 })
 export class BusinessModule { }

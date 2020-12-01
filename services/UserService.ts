@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { UserService } from 'src/authModule/AuthService';
-import { UserBusiness } from 'src/business/userBusiness';
-import { UserDocument } from 'src/model/user';
+import { Injectable, Scope } from '@nestjs/common';
+import { UserService } from '../auth/AuthService';
+import { UserBusiness } from '../business/userBusiness';
+import { UserDocument } from '../model/user';
 
 export interface LoginInfo {
     email: string;
@@ -40,6 +40,7 @@ export class AuthUserService implements UserService<LoginInfo, RegisterInfo, Use
     }
 
     async createUserParamDecorator(payload: Payload) {
+        console.log('payload', payload);
         return {
             id: payload.userId
         };

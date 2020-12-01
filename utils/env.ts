@@ -15,5 +15,8 @@ let environmentVariables : any = {
 export default {
     get variables(): Variables {
         return environmentVariables;
+    },
+    get isDev(): boolean {
+        return process.env.NODE_ENV !== 'production';
     }
 }

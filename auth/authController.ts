@@ -1,4 +1,4 @@
-import { Body, ConflictException, Controller, Inject, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
+import { Body, ConflictException, Controller, Inject, Post, Req, Res, UnauthorizedException, Get } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthConfig, UserService } from './AuthService';
 import { ValidationService } from './validationService';
@@ -23,8 +23,16 @@ export class AuthController {
         })
     }
 
+    @Get('/')
+    index() {
+        return {
+            login: false,
+        }
+    }
+
     @Post('/login')
     async login(@Body() loginInfo: any, @Res() response: Response) {
+        console.log('login called');
         const user = await this.userBusiness.getUser(loginInfo);
 
         if (this.userBusiness.validatePassword(loginInfo, user)) {
