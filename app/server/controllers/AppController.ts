@@ -1,15 +1,14 @@
-import { All, Controller, Get, Res } from '@nestjs/common';
+import { All, Controller, Get, Redirect, Res } from '@nestjs/common';
 import { Next, NextParams, NextService } from '../nextModule/nextService';
+import { Auth } from '../../../auth/authGuard';
 
 @Controller()
 export class AppController {
     constructor(private next: NextService) { }
 
-    @Get('/data*')
-    data() {
-        return {
-            data: 'data'
-        }
+    @Auth()
+    @Get('/dashboard')
+    async dashboard(@Next() params: NextParams, @Res() res) {
+        return this.next.handle(params);
     }
-
 }

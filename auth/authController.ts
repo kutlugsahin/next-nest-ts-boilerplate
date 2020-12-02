@@ -12,12 +12,15 @@ export class AuthController {
     constructor(@Inject('AuthConfig') private authConfig: AuthConfig, @Inject('UserService') private userBusiness: UserService, private validation: ValidationService) { }
 
     private async createTokenResponse(response: Response, payload: any) {
-        const { tokenExpireIn, refreshTokenExpireIn } = this.authConfig;
+        const { tokenExpireIn, refreshTokenExpireIn, apiTokenKey, pagetokenExpireIn, pageTokenKey } = this.authConfig;
 
         const accesstoken = await this.validation.createToken(payload, tokenExpireIn);
         const refreshToken = await this.validation.createToken({ token: accesstoken }, refreshTokenExpireIn);
 
-        response.cookie('token', accesstoken, { httpOnly: true });
+        const pageToken = await this.validation.createToken(payload, pagetokenExpireIn);
+
+        response.cookie(apiTokenKey, accesstoken, { httpOnly: true });
+        response.cookie(pageTokenKey, pageToken, { httpOnly: true });
         return response.json({
             refreshToken,
         })
@@ -59,7 +62,7 @@ export class AuthController {
     @Post('/refreshToken')
     async replaceToken(@Body() refreshTokenBody: RefreshToken, @Req() request: Request, @Res() response: Response) {
         try {
-            const token = request.cookies.token;
+            const token = request.cookies[this.authConfig.apiTokenKey];
             const refreshToken = refreshTokenBody.token;
 
             const decodedToken = await this.validation.validate(refreshToken);

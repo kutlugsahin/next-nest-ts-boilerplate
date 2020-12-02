@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev:next": "next dev",
-    "dev": "nodemon --watch server --exec \"ts-node server/index.ts --p server/tsconfig.json\"",
+    "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node server\\index.ts --p server\\tsconfig.json\"",
     "build": "next build",
     "start": "next start"
   },

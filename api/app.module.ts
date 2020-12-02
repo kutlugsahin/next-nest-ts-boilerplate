@@ -6,12 +6,7 @@ import { AuthUserService } from '../services/UserService';
 import { BarController } from 'controllers/barController';
 
 @Module({
-  imports: [BusinessModule, AuthModule.config({
-    secret: 'secret',
-    tokenExpireIn: '5s',
-    refreshTokenExpireIn: '1d',
-    
-  }, AuthUserService)],
+  imports: [BusinessModule, AuthModule.config(AuthModule.defaultConfig, AuthUserService)],
   providers: [AuthUserService],
   controllers: [FooController, BarController]
 })

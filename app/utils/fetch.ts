@@ -43,7 +43,7 @@ const handleResponse = async <T>(request: () => Promise<Response>) => {
 
             console.log(errResponse);
 
-            if (errResponse.message === 'TokenExpiredError') {
+            if (errResponse.message === 'ApiUnauthorized') {
                 const token = localStorage.getItem('refreshToken');
 
                 if (token) {

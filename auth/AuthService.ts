@@ -2,6 +2,10 @@ export interface AuthConfig {
     secret: string;
     tokenExpireIn: string;
     refreshTokenExpireIn: string;
+    pagetokenExpireIn: string;
+    apiTokenKey: string;
+    pageTokenKey: string;
+    type: 'page' | 'api'
 }
 
 export interface AuthUser {
