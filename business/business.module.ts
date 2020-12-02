@@ -11,7 +11,9 @@ const mongooseModule = MongooseModule.forRoot(connectionString, {
     useCreateIndex: true,
 })
 
-const modelModule = MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]);
+const modelModule = MongooseModule.forFeature([
+    { name: User.name, schema: UserSchema },
+]);
 
 @Module({
     imports: [mongooseModule, modelModule],

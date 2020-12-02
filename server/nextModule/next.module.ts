@@ -2,7 +2,7 @@ import { DynamicModule } from '@nestjs/common';
 import next from 'next';
 import { NextService } from './nextService';
 const isDev = process.env.NODE_ENV !== 'production';
-const nextApp = next({ dev: isDev });
+const nextApp = next({ dev: isDev, dir: '../app' });
 
 export class NextModule {
     public static async forRoot(): Promise<DynamicModule> {

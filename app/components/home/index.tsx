@@ -12,7 +12,7 @@ export const Home = () => {
 
     return (
         <div>
-            <h1>Home Page</h1>
+            <h1>Home Page@@@</h1>
             <h2>{foo.foo}</h2>
             <button onClick={getFoo}>fetch Foo</button>
             <br/>

@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev:next": "next dev",
-    "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node server\\index.ts --p server\\tsconfig.json\"",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
