@@ -34,6 +34,9 @@ export const Login = () => {
 
     return (
         <div className={styles.page}>
+            <p className={styles.header}>
+                <h1>Welcome to Next.js Nest.js Boilerplate</h1>
+            </p>
             <div className={styles.form}>
                 <div className={styles.line}>
                     <label htmlFor="email">Email</label>
