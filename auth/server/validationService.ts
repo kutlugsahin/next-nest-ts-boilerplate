@@ -1,6 +1,7 @@
-import { HttpException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
-import { JsonWebTokenError, sign, TokenExpiredError, verify } from 'jsonwebtoken';
-import { Response } from 'express';
+import { sign, verify } from 'jsonwebtoken';
+
+import { Inject, Injectable } from '@nestjs/common';
+
 import { AuthConfig } from './AuthService';
 
 export const TOKEN_EXPIRED = 'TokenExpiredError';

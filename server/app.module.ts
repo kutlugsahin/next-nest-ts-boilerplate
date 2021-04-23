@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import { AuthModule } from "../auth/auth.module";
+import { AuthModule } from "../auth/server/auth.module";
 import { BusinessModule } from '../business/business.module';
 import { AuthUserService } from "../services/UserService";
 import env from '../utils/env';

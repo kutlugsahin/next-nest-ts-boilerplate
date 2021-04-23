@@ -1,6 +1,6 @@
-import { All, Controller, Get, Redirect, Res } from '@nestjs/common';
+import { Controller, Get, Redirect, Res } from '@nestjs/common';
 import { Next, NextParams, NextService } from '../nextModule/nextService';
-import { Auth } from '../../auth/authGuard';
+import { Auth } from '../../auth/server/authGuard';
 
 @Controller()
 export class AppController {

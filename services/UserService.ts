@@ -1,5 +1,5 @@
 import { Injectable, Scope } from '@nestjs/common';
-import { UserService } from '../auth/AuthService';
+import { UserService } from '../auth/server/AuthService';
 import { UserBusiness } from '../business/userBusiness';
 import { UserDocument } from '../model/user';
 
@@ -18,7 +18,7 @@ interface Payload {
 
 @Injectable()
 export class AuthUserService implements UserService<LoginInfo, RegisterInfo, UserDocument, Payload> {
-    constructor(private userBusiness: UserBusiness) { }
+    constructor(private userBusiness: UserBusiness) {}
 
     async getUser(loginInfo: LoginInfo): Promise<UserDocument> {
         return this.userBusiness.getUserByMail(loginInfo.email);
@@ -26,7 +26,7 @@ export class AuthUserService implements UserService<LoginInfo, RegisterInfo, Use
 
     async saveUser(user: RegisterInfo): Promise<UserDocument> {
         return this.userBusiness.saveUser({
-            ...user
+            ...user,
         });
     }
     async validatePassword(loginInfo: LoginInfo, user: UserDocument): Promise<boolean> {
@@ -42,7 +42,7 @@ export class AuthUserService implements UserService<LoginInfo, RegisterInfo, Use
     async createUserParamDecorator(payload: Payload) {
         console.log('payload', payload);
         return {
-            id: payload.userId
+            id: payload.userId,
         };
     }
 }

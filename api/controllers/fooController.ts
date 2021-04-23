@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { Auth, User } from '../../auth/authGuard';
+import { Auth, User } from '../../auth/server/authGuard';
 import { UserBusiness } from '../../business/userBusiness';
 import { UserDocument } from '../../model/user';
 
